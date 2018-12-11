@@ -1,0 +1,168 @@
+/*
+	GENERAL
+*/
+*{
+	box-sizing: border-box;
+}
+ul,li{
+	margin: 0;
+	list-style-type: none;
+}
+a:hover,
+a:link,
+a:active,
+a:visited{
+	color: #000;
+	text-decoration: none;
+	font-weight: 400;
+}
+body{
+	font-family: 'Lato';
+}
+/*******************/
+
+/*
+	ALIGNMENT
+*/
+.vertical-align{
+	margin-top: 15%;
+
+}
+
+
+
+/********************/
+/*
+	FORMS
+*/
+.form{
+	margin-top: 2rem;
+}
+/********************/
+/*
+	BUTTONS
+*/
+.btn-cus{
+	background-color:orange;
+}
+.btn-success-cus{
+	background-color: green;
+	height: 2.3rem;
+}
+
+/********************/
+/*
+	NAVIGATION
+*/
+.nav{
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: flex-end; /*horizontal align-content vetical*/
+	align-items: baseline;
+	background-color: #5d4037;
+	height: 4em;
+	padding-top: .5em;
+}
+.nav .nav-item{
+	text-align: center; text-transform: uppercase;
+	/*background-color: white;*/
+	margin-right: 0.3rem;
+}
+.nav .nav-item:last-child{
+	margin-right: 2rem;
+	color: red;
+}
+.nav .nav-item:last-child a{
+	margin-right: 2rem;
+	color: red;font-weight: 700;
+}
+.nav .nav-item a{
+	color: white;
+	font-size: 0.7em;
+	font-weight: 400;
+}
+.nav .nav-item:last-child 
+a:hover{
+	/*border: 2px solid green; */
+	border-bottom: 1px solid #5d4037;
+	margin-top: 0px;
+	margin-left: 50px;
+	transform: scale(1.6);
+	transition: margin 0.2s ease-out .2s
+				,transform:  0.1s linear;
+				/*trans property duration timing function delay*/
+}
+.nav .nav-item 
+	a:hover{
+	border-bottom: 2px solid  red;
+	transition: border-bottom .2s;
+}
+.active{
+	border-bottom: 2px solid #bc5100;
+}
+.nav .nav-item a.logout{
+	font-size: 1.1em;
+}
+/*********************/
+/*
+	SIDEBAR
+*/
+	.sidebar{
+		flex:1;
+		height: 100vh;
+		background-color: #fff;
+	}
+	.sidebar-item{
+		/*margin-top: 10rem;*/
+		padding-top: 0.5rem;
+		background-color: #8b6b61;
+		height: 3rem;
+		text-align: center;
+		border-bottom: 2px solid #301810;
+	}
+	.sidebar-item:first-child{
+		margin-top: 10rem;
+	}
+	.sidebar-item a{
+		font-weight: 600;
+		color:#321911;
+	}
+.wrapper{
+	display: flex;
+	flex-flow: row nowrap;
+}
+/*********************/
+/*
+	SECTION
+*/
+
+section{
+	padding: 5rem;
+	background-color: #f4f4f4;
+	flex:6;
+	height: 100vh;
+}
+.one,
+.two,
+.three{
+	font-weight: 700;
+}
+.one p span,
+.two p span,
+.three p span{
+	font-weight: 400;
+	margin-left: 5rem;
+}
+
+/********************/
+
+/*
+	ERROR MESSAGES
+*/
+
+.reg-Error{
+	color: red;
+	margin-top: 1rem;
+	font-size: 0.7em;
+	font-weight: 700;
+}

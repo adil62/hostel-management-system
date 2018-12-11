@@ -1,0 +1,1 @@
+manager-notice.view.php
