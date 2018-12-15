@@ -7,7 +7,7 @@
 		<!-- VIEW VCATE APPLICATIOBn and APPROVE disapprove -->
 	</li>
 	<li class="nav-item">
-		<a href="<?php echo DOCROOT.'/assets/templates/manager/manager-fine.view.php';?>" class="nav-link">Fine</a>
+		<a href="<?php echo DOCROOT.'/assets/templates/manager/manager-attendence.view.php';?>" class="nav-link">Attendence</a>
 	</li>
 	<li class="nav-item">
 		<!-- view all complaints -->

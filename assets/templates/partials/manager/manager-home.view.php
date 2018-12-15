@@ -1,32 +1,17 @@
-<?php
-if(isset($_GET['p'])): ?>
-	<?php if( $_GET['p'] === 'update'): ?>
-		<h1>UPDATE BODY</h1>;
-	<?php elseif($_GET['p'] === 'delete'): ?>
-		<h1>deley e body</h1>
-	<?php else: ?>
-		<h1>default boody</h1>
-	<?php endif; ?>
+<?php if(isset($_GET['p'])): ?>
+		<?php if( $_GET['p'] === 'update'): ?>
+			<h3 class="text-center font-weight-light">Update Member</h3>
+			<?php  require_once($_SERVER['DOCUMENT_ROOT'].'/projects/hostel/assets/templates/partials/manager/manager-update.view.php'); ?>
+		<?php elseif($_GET['p'] === 'delete'): ?>
+			<h3 class="text-center font-weight-light">Delete Member</h3>
+			<?php  require_once($_SERVER['DOCUMENT_ROOT'].'/projects/hostel/assets/templates/partials/manager/manager-delete.view.php'); ?>
+		<?php else: ?>
+			<h3 class="text-center font-weight-light">Add Member</h3>
+			<?php  require_once($_SERVER['DOCUMENT_ROOT'].'/projects/hostel/assets/templates/partials/manager/manager-add.view.php'); ?>
+		<?php endif; ?>
 <?php else: ?> 
-<div class="section">
-<h3 class="text-center font-weight-light">Members</h3>
-<table class="table table-hover table-condensed m-2">
-	<thead>
-		<tr>
-			<th>Date</th>
-			<th>Message</th>
-			<th>Action</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>12-09-2018</td>
-			<td>Fee is Due</td>
-			<td>  <a href="" class="dlt-btn" > Delete </a> </td>
-		</tr>
-	</tbody>	
-</table>	
-</div>
-?>
+	<h3 class="text-center font-weight-light">Add Member</h3>
+	<?php  require_once($_SERVER['DOCUMENT_ROOT'].'/projects/hostel/assets/templates/partials/manager/manager-add.view.php'); ?>
 <?php endif; ?>
-
+<script type="text/javascript" src="<?php echo DOCROOT.'/assets/js/member-updateAJAX.js'; ?> ">
+</script>

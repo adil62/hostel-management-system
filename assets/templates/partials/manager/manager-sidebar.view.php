@@ -45,3 +45,31 @@
 	</div>
 </div>
 <?php endif; ?>
+<!-- if Fees -->
+<?php if( $_SERVER['PHP_SELF'] == "/projects/hostel/assets/templates/manager/manager-fees.view.php" ) : ?>
+<div class="sidebar">
+	<div class="sidebar-item">
+		<a href="/projects/hostel/assets/templates/manager/manager-fees.view.php?new" class="font-bold">Update Fees</a>
+	</div>
+	<div class="sidebar-item">
+		<a href="/projects/hostel/assets/templates/manager/manager-fees.view.php?p=old" class="font-bold">Record Payment</a>
+	</div>
+	<div class="sidebar-item">
+		<a href="/projects/hostel/assets/templates/manager/manager-fees.view.php?new" class="font-bold">Fine</a>
+	</div>
+</div>
+<?php endif; ?>
+<!-- if Attendence  -->
+<?php 	if( $_SERVER['PHP_SELF'] == "/projects/hostel/assets/templates/manager/manager-attendence.view.php" ) : ?>
+<div class="sidebar">
+	<div class="sidebar-item">
+		<a href="/projects/hostel/assets/templates/manager/manager-attendence.view.php?p=add" class="font-bold">Add</a>
+	</div>
+	<div class="sidebar-item">
+		<a href="/projects/hostel/assets/templates/manager/manager-attendence.view.php?p=delete" class="font-bold">Delete</a>
+	</div>
+	<div class="sidebar-item">
+		<a href="/projects/hostel/assets/templates/manager/manager-attendence.view.php?p=update" class="font-bold">Update</a>
+	</div>
+</div>
+<?php endif; ?>

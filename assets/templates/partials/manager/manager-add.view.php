@@ -1,19 +1,7 @@
-<?php require_once($_SERVER['DOCUMENT_ROOT']."/projects/hostel/config.php"); ?>
-<?php require_once($_SERVER['DOCUMENT_ROOT']."/projects/hostel/assets/templates/partials/manager/head.php");?>
-<!DOCTYPE html>
-<html>
-<head>
-	<?php require_once($_SERVER['DOCUMENT_ROOT']."/projects/hostel/includes/head.php"); ?> 
-	<title>New Registration</title>
-</head>
-<body>
-<?php require_once($_SERVER['DOCUMENT_ROOT']."/projects/hostel/assets/templates/partials/manager/manager-nav.view.php") ?>
-<div class="wrapper">
-<?php require_once($_SERVER['DOCUMENT_ROOT']."/projects/hostel/assets/templates/partials/manager/sidebar/members-sidebar.view.php") ?>
-	<section>
+<!-- <div class="wrapper">
+<section > -->
 <div class="container">	
 <!-- <div class="form"> -->
-<h1 class="text-center">Add Member</h1>
 <form method="POST" class="form-group" action="<?= DOCROOT.'/classes/register.class.php' ?>">
 	<!-- COLLECT USER INFO -->
 	<div class="row">
@@ -92,9 +80,7 @@
 </form>
 <!-- </div> -->
 </div>	
-	</section>
-</div>
+<!-- 	</section>
+</div> -->
 
 <script type="text/javascript" src="<?php echo DOCROOT;?>/assets/js/cleaner.js"></script>
-</body>
-</html>

@@ -12,7 +12,7 @@
  <div class="wrapper">
 	<?php require_once($_SERVER['DOCUMENT_ROOT']."/projects/hostel/assets/templates/partials/manager/manager-sidebar.view.php");?>
 	<section>
-	<?php require_once($_SERVER['DOCUMENT_ROOT']."/projects/hostel/assets/templates/partials/manager/master.view.php"); ?>
+	<?php require_once($_SERVER['DOCUMENT_ROOT']."/projects/hostel/assets/templates/partials/manager/manager-home.view.php"); ?>
     </section>
 </div>
 </body>

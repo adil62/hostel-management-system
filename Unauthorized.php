@@ -1,1 +1,1 @@
-<h1>UNAUTHORIZED !</h1>
+<h1 class="text-center">UNAUTHORIZED !</h1>

@@ -1,0 +1,1 @@
+manager-fine.view.php

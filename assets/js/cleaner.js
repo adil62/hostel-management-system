@@ -93,7 +93,7 @@ function displayErrors(msg,ele){
   userPhone.addEventListener("keyup",function(){
   	var val = userPhone.value;
   	strip(val);
-  	var re  = /^[0-9]{13}$/g;
+  	var re  = /^[0-9]{10,13}$/g;
   	if ( !re.test(val) ){
   		displayErrors("Enter A Valid Phone Number",this);
   		__DONTFLAG = true;
@@ -141,7 +141,7 @@ userRegno.addEventListener("keyup",function(){
 userParentPhone.addEventListener("keyup",function(){
     var val = userParentPhone.value;
     strip(val);
-    var re  = /^[0-9]{13}$/g;
+    var re  = /^[0-9]{10,13}$/g;
     if ( !re.test(val) ){
       displayErrors("Enter A Valid Phone Number",this);
       __DONTFLAG = true;
