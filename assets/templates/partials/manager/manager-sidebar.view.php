@@ -63,13 +63,10 @@
 <?php 	if( $_SERVER['PHP_SELF'] == "/projects/hostel/assets/templates/manager/manager-attendence.view.php" ) : ?>
 <div class="sidebar">
 	<div class="sidebar-item">
-		<a href="/projects/hostel/assets/templates/manager/manager-attendence.view.php?p=add" class="font-bold">Add</a>
+		<a href="/projects/hostel/assets/templates/manager/manager-attendence.view.php?p=add" class="font-bold">Record Attendence</a>
 	</div>
 	<div class="sidebar-item">
-		<a href="/projects/hostel/assets/templates/manager/manager-attendence.view.php?p=delete" class="font-bold">Delete</a>
-	</div>
-	<div class="sidebar-item">
-		<a href="/projects/hostel/assets/templates/manager/manager-attendence.view.php?p=update" class="font-bold">Update</a>
+		<a href="/projects/hostel/assets/templates/manager/manager-attendence.view.php?p=view" class="font-bold">View Records</a>
 	</div>
 </div>
 <?php endif; ?>

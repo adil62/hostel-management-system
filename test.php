@@ -1,8 +1,4 @@
 <?php 
-
-$uipPass   = "hoo";
-$uipName   = "adil";
-$hash = hash('gost',$uipPass.$uipName);
-echo "<br>".$hash;
-
- ?>
+$dt = new DateTime();
+$dtt = $dt->format('d-m-Y');
+var_dump($dtt);

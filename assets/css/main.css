@@ -49,6 +49,18 @@ body{
 	background-color: green;
 	height: 2.3rem;
 }
+button#present,
+button#absent{
+	margin: 1rem 0rem;
+	display: none;
+}
+button#present{
+	margin-left: 1.4rem ;
+}
+div#success{
+	color:green;
+	margin-left: 2rem;
+}
 
 /********************/
 /*
@@ -169,4 +181,10 @@ section{
 #result{
 	font-size: 1em;
 	color:green;
+}
+#check{
+	font-size: 1.3em;
+	color: green;
+	text-transform: uppercase;
+
 }
