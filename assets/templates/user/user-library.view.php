@@ -20,8 +20,6 @@
 </div>
 	<script type="text/javascript" src="../../vendor/js/jquery.js"></script>
 	<script type="text/javascript" src="../../vendor/js/datedropper.js"></script>
-	<script type="text/javascript">
-		$("#date").dateDropper();
-	</script>
+
 </body>
 </html>

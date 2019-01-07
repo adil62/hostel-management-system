@@ -37,10 +37,44 @@ public function get(){
 		$this->Result,
 	];
 }
+public function getAllJson($dt){
+	try{
+		$query = "SELECT *FROM attendence WHERE recorded_date=?";
+		$stmt  = $this->DB->prepare($query);
+		$res   = $stmt->execute([$dt]);
+		if($res){
+			$id     = array();
+			$uid    = array();
+			$rec    = array();
+			$result = array();
+			
+			while ( $res = $stmt->fetch(PDO::FETCH_ASSOC) ){
+				array_push($id, $res['id']);
+				array_push($uid, $res['user_id']);
+				array_push($result, $res['attendence']);
+				array_push($rec, $res['recorded_date']);
+			}
+			$combi = 
+			[
+				"id"      => $id,
+				"user_id" => $uid,
+				"recorded_date" => $rec,
+				"attendence" => $rec,
+				"result" => $result,
+			];
+			$combiJSON = json_encode($combi); 
+			return $combiJSON;
+
+		}else{
+			echo "errr with executing query";
+		}
+	}catch(PDOException $e){
+		echo $e->getMessage();
+	}
+}
 
 }
 //
-
 $db = new Database(HOST,USER,PASSWORD,'hostel');
 $ck = new Attendence($db->make());
 if ($_SERVER['HTTP_X_REQUESTED_WITH'] === "presentBtn" 
@@ -48,12 +82,13 @@ if ($_SERVER['HTTP_X_REQUESTED_WITH'] === "presentBtn"
 	// put in ATTENDENCE table the attendence 
 	$ck->set($_POST['user_reg'],'present');
 	$res = $ck->insert();
-	var_dump($res);    
-	
-
+	// var_dump($res);    
 }elseif ($_SERVER['HTTP_X_REQUESTED_WITH'] === "absentBtn"
 		&& $_POST['pressed']=="absent") {
 	$ck->set($_POST['user_reg'],'absent');
 	$res = $ck->insert();
-	var_dump($res);	
+	// var_dump($res);	
+}elseif ($_SERVER['HTTP_X_REQUESTED_WITH'] === "viewRecords"){
+	// var_dump($_POST);
+	echo( $ck->getAllJson($_POST['date']) );
 }

@@ -16,8 +16,6 @@
 <div class="wrapper" >
 	<?php require_once ($_SERVER['DOCUMENT_ROOT']."/projects/hostel/assets/templates/partials/user/user-sidebar.view.php");?>
 		<section >
-	<h3 class="text-center font-weight-light" style="margin-top: -3rem;"> Complaint </h3>
-
 		<!--  include user ATTENDENCE Partials -->
 		<?php require_once($_SERVER['DOCUMENT_ROOT']."/projects/hostel/assets/templates/partials/user/user-complaint.view.php"); ?>
 		</section>

@@ -27,7 +27,7 @@
 		<a href="/projects/hostel/assets/templates/user/user-complaint.view.php?p=new" class="font-bold">New Complaint</a>
 	</div>
 	<div class="sidebar-item">
-		<a href="/projects/hostel/assets/templates/user/user-complaint.view.php?p=previous" class="font-bold">Previous Complaints</a>
+		<a href="/projects/hostel/assets/templates/user/user-complaint.view.php?p=old" class="font-bold">My Complaints</a>
 	</div>
 </div>
 <?php endif; ?>
@@ -35,10 +35,10 @@
 <?php if( $_SERVER['PHP_SELF'] == "/projects/hostel/assets/templates/user/user-notice-board.view.php" ) : ?>
 <div class="sidebar">
 	<div class="sidebar-item">
-		<a href="/projects/hostel/assets/templates/user/user-notice-board.view.php?new" class="font-bold">New Notices</a>
+		<a href="/projects/hostel/assets/templates/user/user-notice-board.view.php?p=my" class="font-bold"> Notices For Me</a>
 	</div>
 	<div class="sidebar-item">
-		<a href="/projects/hostel/assets/templates/user/user-notice-board.view.php?p=old" class="font-bold">Old Notices</a>
+		<a href="/projects/hostel/assets/templates/user/user-notice-board.view.php?p=bcast" class="font-bold">Broadcast Notices</a>
 	</div>
 </div>
 <?php endif; ?>

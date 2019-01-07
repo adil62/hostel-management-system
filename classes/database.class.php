@@ -1,6 +1,6 @@
 <?php 
-require_once('../config.php');
-require_once('../includes/database.php');//db configuration
+require_once($_SERVER['DOCUMENT_ROOT']."/projects/hostel/config.php");
+require_once($_SERVER['DOCUMENT_ROOT']."/projects/hostel/includes/database.php");//db configuration
 class Database{
 	protected $host;
 	protected $user;

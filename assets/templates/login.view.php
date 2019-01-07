@@ -7,34 +7,30 @@
 	<?php require_once("../js/main.js"); ?>
 </head>
 <body>
-<div class="container vertical-align">
-	<div class="row">
-		<div class="col-md-12"> 
-			<h3 class="text-center">Login</h3>
-		</div>
-	</div> 
-	<form method="POST" class="form-group" action=" <?php echo DOCROOT.'/classes/login.class.php';  ?> ">
-		<div class="row">
-			<div class="col-md-6 offset-md-3 offset-md-3">
-				<input type="text" name="email" placeholder="Enter Your Email" class="form-control">
+<!-- sdasdasd -->
+<div id="LoginForm">
+	<div class="container">
+		<!-- <h1 class="form-heading">login Form</h1> -->
+			<div class="login-form">
+				<div class="main-div">
+				   <div class="panel">
+				   <h2>Login</h2>
+				   <p>Please Enter Your Email And Register Number</p>
+				   </div>
+				    <form id="Login" action="<?php echo DOCROOT.'/classes/login.class.php';?>" method="POST">
+				        <div class="form-group">
+				            <input type="text" name="email" placeholder="Enter Your Email" class="form-control">
+				        </div>
+				        <div class="form-group">
+				           <input placeholder="Enter your Register Number" type="text" name="regNo" class="form-control" autocomplete="off">
+				        </div>
+				        <button type="submit" class="btn btn-primary">Login</button>
+				    </form>
+				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-6 offset-md-3">
-				<input placeholder="Enter your Register Number" type="text" name="regNo" class="form-control">
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-6 offset-md-3">
-				<input  type="submit" name="submit" class="form-control btn btn-primary" value="Login">
-			</div>
-		</div>
-	</form>
-	<div class="row">
-		<div class="col-md-4 offset-md-8">
-			<a href="<?= TEMPLATES.'/register.view.php'; ?>">Register</a>
-		</div>
-	</div>			
+	</div>
 </div>
+</div>
+
 </body>
 </html>

@@ -1,1 +1,0 @@
-manager-profile.view.php

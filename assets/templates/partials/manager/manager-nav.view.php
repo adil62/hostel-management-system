@@ -1,26 +1,23 @@
 <nav class="nav">
 	<!-- if manager show this -->
 	<li class="nav-item">
-		<a href="#" class="nav-link active">Members</a>
-		<!-- view all mebers under the particular manager -->
-		<!-- View APPLICATIOB REQUESTs approve mebers -->
-		<!-- VIEW VCATE APPLICATIOBn and APPROVE disapprove -->
+		<a href="<?php echo DOCROOT.'/assets/templates/manager/manager-home.view.php';?>" class="nav-link">Members</a>
 	</li>
 	<li class="nav-item">
-		<a href="<?php echo DOCROOT.'/assets/templates/manager/manager-attendence.view.php';?>" class="nav-link">Attendence</a>
+		<a href="<?php echo DOCROOT.'/assets/templates/manager/manager-attendence.view.php?p=add';?>" class="nav-link">Attendence</a>
 	</li>
 	<li class="nav-item">
 		<!-- view all complaints -->
-		<a href="<?php echo DOCROOT.'/assets/templates/manager/manager-complaint.view.php';?>" class="nav-link">Complaints</a>
+		<a href="<?php echo DOCROOT.'/assets/templates/manager/manager-complaint.view.php?p=view';?>" class="nav-link">Complaints</a>
 	</li>
 	<li class="nav-item">
 		<a href="<?php echo DOCROOT.'/assets/templates/manager/manager-fees.view.php';?>" class="nav-link">Fees</a>
 	</li>
 	<li class="nav-item">
-		<a href="<?php echo DOCROOT.'/assets/templates/manager/manager-profile.view.php';?>" class="nav-link">Profile</a>
-		<!-- ad new NOTICE in this section -->
-		<!-- Show all members -->
-		<!-- change password -->
+		<a href="<?php echo DOCROOT.'/assets/templates/manager/manager-notice.view.php';?>" class="nav-link">Notice</a>
+	</li>
+	<li class="nav-item">
+		<a href="<?php echo DOCROOT.'/assets/templates/manager/manager-library.view.php?p=add';?>" class="nav-link">Library</a>
 	</li>
 	<li class="nav-item">
 		<a href="<?php echo DOCROOT.'/assets/templates/user/logout.view.php'; ?> " class="nav-link logout">Logout</a>

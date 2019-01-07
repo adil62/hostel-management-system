@@ -15,5 +15,11 @@
 	<?php require_once($_SERVER['DOCUMENT_ROOT']."/projects/hostel/assets/templates/partials/manager/manager-fees.view.php"); ?>
     </section>
 </div>
+<script type="text/javascript" src="<?php echo DOCROOT.'/assets/js/manager-fee.js'; ?>"></script>
+<script type="text/javascript" src="<?php echo DOCROOT.'/vendor/js/jquery.js'; ?>"></script>
+<script type="text/javascript" src="<?php echo DOCROOT.'/vendor/js/datedropper.js'; ?>"></script>
+<script>
+	$('#date2').dateDropper();
+</script>
 </body>
 </html>

@@ -13,8 +13,7 @@
 <div class="wrapper">
 	<?php require_once ($_SERVER['DOCUMENT_ROOT']."/projects/hostel/assets/templates/partials/user/user-sidebar.view.php");?>
 		<section>
-		<h3 class="text-center" style="margin-top: -3rem;margin-bottom: 1rem">User <?= $_SESSION['name'][0]->user_name ?>  Details</h3>
-		<?php require_once($_SERVER['DOCUMENT_ROOT']."/projects/hostel/assets/templates/partials/user/user-details.view.php"); ?>
+		<?php require_once($_SERVER['DOCUMENT_ROOT']."/projects/hostel/assets/templates/partials/user/user-home.view.php"); ?>
 		</section>
 </div>
 </body>

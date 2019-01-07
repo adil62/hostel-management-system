@@ -3,6 +3,7 @@
 */
 *{
 	box-sizing: border-box;
+	outline: none;
 }
 ul,li{
 	margin: 0;
@@ -16,9 +17,23 @@ a:visited{
 	text-decoration: none;
 	font-weight: 400;
 }
-body{
-	font-family: 'Lato';
+body,html{
+	/*font-family: 'Lato';*/
+	height: 120vh;
 }
+
+.sidebar-item{
+	/*linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)),*/
+	/*background:  linear-gradient(rgba(0,0,0,.3), rgba(0,0,0,.3)),url("../images/background--main.jpg");*/
+	/*background-size: cover;*/
+
+}
+.nav{
+	background:linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)), url("../images/images6.jpeg");
+	/*background-size: 90% auto;*/
+	background-size: cover;
+}
+
 /*******************/
 
 /*
@@ -29,7 +44,75 @@ body{
 
 }
 
+/*
+	LOGIN PAGE
+*/
+.login-head{
+	position: absolute;
+	top: 4rem;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.login--form-container{
+	border:1px solid green;
+}
+/**/
+div#LoginForm{ background-image:url("https://hdwallsource.com/img/2014/9/blur-26347-27038-hd-wallpapers.jpg"); background-repeat:no-repeat; background-position:center; background-size:cover; padding:10px;height: 100%;}
 
+.form-heading { color:#fff; font-size:23px;}
+.panel h2{ color:#444444; font-size:18px; margin:0 0 8px 0;}
+.panel p { color:#777777; font-size:14px; margin-bottom:30px; line-height:24px;}
+.login-form .form-control {
+  background: #f7f7f7 none repeat scroll 0 0;
+  border: 1px solid #d4d4d4;
+  border-radius: 4px;
+  font-size: 14px;
+  height: 50px;
+  line-height: 50px;
+}
+.main-div {
+  background: #ffffff none repeat scroll 0 0;
+  border-radius: 2px;
+  margin: 7% auto 30px;
+  max-width: 38%;
+  padding: 50px 70px 70px 71px;
+}
+
+.login-form .form-group {
+  margin-bottom:10px;
+}
+.login-form{ text-align:center;}
+.forgot a {
+  color: #777777;
+  font-size: 14px;
+  text-decoration: underline;
+}
+.login-form  .btn.btn-primary {
+  background: #f0ad4e none repeat scroll 0 0;
+  border-color: #f0ad4e;
+  color: #ffffff;
+  font-size: 14px;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  padding: 0;
+}
+.forgot {
+  text-align: left; margin-bottom:30px;
+}
+.botto-text {
+  color: #ffffff;
+  font-size: 14px;
+  margin: auto;
+}
+.login-form .btn.btn-primary.reset {
+  background: #ff9900 none repeat scroll 0 0;
+}
+.back { text-align: left; margin-top:10px;}
+.back a {color: #444444; font-size: 13px;text-decoration: none;}
+
+/**/
+/********************/
 
 /********************/
 /*
@@ -62,6 +145,9 @@ div#success{
 	margin-left: 2rem;
 }
 
+#submitPay{
+	margin-top: 1rem;
+}
 /********************/
 /*
 	NAVIGATION
@@ -121,16 +207,22 @@ a:hover{
 */
 	.sidebar{
 		flex:1;
-		height: 100vh;
-		background-color: #fff;
+		height: 120vh;
+		/*background-color: #fafafa;*/
+		background-color: #f4f4f4;
+		border-right: 2px solid #fff;
 	}
 	.sidebar-item{
 		/*margin-top: 10rem;*/
 		padding-top: 0.5rem;
-		background-color: #8b6b61;
+		/*background-color: #8b6b61;*/
 		height: 3rem;
 		text-align: center;
-		border-bottom: 2px solid #301810;
+		border-bottom: 1px solid #301810;
+	}
+	.sidebar-item:hover{
+		transform: scale(1.2);
+		transition: transform 0.2s ease;
 	}
 	.sidebar-item:first-child{
 		margin-top: 10rem;
@@ -152,7 +244,7 @@ section{
 	padding: 3rem;
 	background-color: #f4f4f4;
 	flex:6;
-	height: 100vh;
+	height: 120vh;
 }
 .one,
 .two,
@@ -187,4 +279,27 @@ section{
 	color: green;
 	text-transform: uppercase;
 
+}
+/*js stylings DYNAMC*/
+#payDetails{
+	margin-top: 1rem;
+}
+
+.reg span,
+.present span,
+.amount span{
+	font-weight: bold;
+}
+.reg span{
+	margin-right: 1rem;
+}
+.present span{
+	margin-right: 3rem;
+}
+.amount span{
+	margin-right: 2rem;
+}
+
+.none{
+	display: none;
 }
