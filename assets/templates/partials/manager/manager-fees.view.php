@@ -47,7 +47,10 @@
 					<option value="12">December</option>
 				</select>
 				<select  disabled="disabled">
-					<option id="currentYear" value="2018">2018</option>
+				<?php require_once($_SERVER['DOCUMENT_ROOT'].'/projects/hostel/classes/utility.class.php'); ?>	
+					<option id="currentYear" value="<?= $ob->thisYear(); ?>">
+						<?= $ob->thisYear(); ?>
+					</option>
 				</select>
 				<button class="btn btn-warning btn-sm" id="filter2">go</button>
 			</div>

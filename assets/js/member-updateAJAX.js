@@ -2,6 +2,8 @@ var ele          = document.getElementById("ajaxBtn");
 var responseDATA;
 ele.addEventListener('click',function(){
 	var postDATA = document.getElementById("reg_no").value;
+	var formDiv  = document.getElementsByClassName("section2")[0];
+	formDiv.classList.remove("d-none");
 	// console.log(postDATA);
 	var XHR      = new XMLHttpRequest;
 	XHR.onreadystatechange = responseHandle;	

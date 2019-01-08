@@ -44,11 +44,13 @@ searchBtn.addEventListener("click",function(){
 				var tr = table.insertRow();
 				for( prop in res[i] ){
 					var td = document.createElement("td");
-					td.innerHTML = res[i][prop];
-					tr.append(td);
+
 					if(prop === "image"){
 						var img = document.createElement("img");
-						img.setAttribute("src",)
+						img.setAttribute("src","../images/books/"+res[i][prop]);
+					}else{
+						td.innerHTML = res[i][prop];
+						tr.append(td);
 					}
 				}
 				tbody.append(tr);
@@ -56,9 +58,6 @@ searchBtn.addEventListener("click",function(){
 			table.append(thead);
 			table.append(tbody);
 			div.append(table);
-		}else{
-			div.innerHTML = "<h5 class='text-center mt-4'> Nothing Found.. </h5>";
 		}
-
 	}	
 });

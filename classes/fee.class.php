@@ -22,12 +22,12 @@ class Fee{
 		$res  = json_encode($res);
 		return $res;
 	}
-	public function getAllMonth($month){
+	public function getAllMonth($month,$year){
 		// echo $month;
 		$dateObj          = DateTime::createFromFormat('m', $month);
 		$last_monthString = $dateObj->format('F');
-		$stmt = $this->DB->prepare("SELECT *FROM payment WHERE MONTHNAME(payment_date) = ?");
-		$stmt->execute([$last_monthString]);
+		$stmt = $this->DB->prepare("SELECT *FROM payment WHERE MONTHNAME(payment_date) = ? AND YEAR(payment_date) = ?");
+		$stmt->execute([$last_monthString,$year]);
 		$res  = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		$res  = json_encode($res);
 		return $res;
@@ -91,7 +91,8 @@ elseif(isset($_SERVER['HTTP_X_REQUESTED_WITH']) &&
 	$_SERVER['HTTP_X_REQUESTED_WITH'] == "getMonth"){
 	
 	$fee = new Fee($db->make());
-	echo( $fee->getAllMonth($_POST['month']));
+	// echo( $fee->getAllMonth($_POST['month']));
+	echo( $fee->getAllMonth($_POST['month'],$_POST['year']));
 
 }
 

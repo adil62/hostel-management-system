@@ -4,7 +4,7 @@
 		<div id="room"></div>
 		<button class="btn btn-outline-warning btn-sm ml-3" id="viewRoom">Go</button>	
 	</div>
-	<div id="roomDetails" style="overflow: scroll;max-width: 90%;"></div>	
+	<div id="roomDetails" style="overflow-x: scroll;max-width: 1000px;"></div>	
 </div>
 <script type="text/javascript">
 	
@@ -70,6 +70,7 @@ viewGo.addEventListener("click",function(){
     				table.classList.add("table","table-hover","table-compact");
     			var tBody    = document.createElement('tbody');
     			var tHead    = document.createElement('thead');
+                    tHead.classList.add("thead-light");
 				var trH      = table.insertRow();
     			
     			console.log(result[0][prop]);

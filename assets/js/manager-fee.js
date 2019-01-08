@@ -118,7 +118,8 @@ filter2.addEventListener("click",function(){
 	XHR.onreadystatechange = callback;
 	XHR.setRequestHeader("X-Requested-With","getMonth");
 	XHR.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	XHR.send("month="+ encodeURIComponent(valueMonth));
+	// XHR.send("month="+ encodeURIComponent(valueMonth));
+	XHR.send("month="+ encodeURIComponent(valueMonth)+"&year="+encodeURIComponent(valueYear));
     XHR.onreadystatechange = callback;
 
     function callback(){

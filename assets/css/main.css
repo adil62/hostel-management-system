@@ -206,7 +206,7 @@ a:hover{
 	SIDEBAR
 */
 	.sidebar{
-		flex:1;
+		flex:2;
 		height: 120vh;
 		/*background-color: #fafafa;*/
 		background-color: #f4f4f4;
@@ -231,6 +231,7 @@ a:hover{
 		font-weight: 600;
 		color:#321911;
 	}
+
 .wrapper{
 	display: flex;
 	flex-flow: row nowrap;
@@ -243,7 +244,7 @@ a:hover{
 section{
 	padding: 3rem;
 	background-color: #f4f4f4;
-	flex:6;
+	flex:6 0 500px;
 	height: 120vh;
 }
 .one,

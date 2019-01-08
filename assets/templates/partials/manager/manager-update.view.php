@@ -4,7 +4,7 @@
 </div>
 <div id="section1">
 </div>
-<div class="section2">
+<div class="section2 d-none">
 	<select name="update_name" class="form-control col-md-4 mt-3  offset-md-4">
 		<option>user_name</option>
 		<option>user_branch</option>
@@ -22,3 +22,6 @@
 </div>
 <div id="result" class="text-center">
 </div>
+<footer class="footer fixed-bottom mb-5">
+	<!-- 1-Search For The User 2 Select The Option 3 Update The Value -->
+</footer>

@@ -37,6 +37,13 @@ public function get(){
 		$this->Result,
 	];
 }
+public function getPreviousMonthRecords($reg){
+	$dateOb  = new dateTime('last month');
+	$month   = $dateOb->format('F');
+	$stmt    = $this->DB->prepare("SELECT *FROM attendence WHERE user_id = ? AND MONTHNAME(recorded_date) = ?");
+	$stmt->execute([$reg,$month]);
+	return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 public function getAllJson($dt){
 	try{
 		$query = "SELECT *FROM attendence WHERE recorded_date=?";
@@ -76,19 +83,24 @@ public function getAllJson($dt){
 }
 //
 $db = new Database(HOST,USER,PASSWORD,'hostel');
-$ck = new Attendence($db->make());
-if ($_SERVER['HTTP_X_REQUESTED_WITH'] === "presentBtn" 
-		 && $_POST['pressed']=="present") {
+$ob = new Attendence($db->make());
+if (
+	isset($_SERVER['HTTP_X_REQUESTED_WITH']) && 
+	$_SERVER['HTTP_X_REQUESTED_WITH'] === "presentBtn" 
+	&& $_POST['pressed']=="present") {
 	// put in ATTENDENCE table the attendence 
-	$ck->set($_POST['user_reg'],'present');
-	$res = $ck->insert();
+		$ob->set($_POST['user_reg'],'present');
+		$res = $ck->insert();
 	// var_dump($res);    
-}elseif ($_SERVER['HTTP_X_REQUESTED_WITH'] === "absentBtn"
+}elseif (
+		isset($_SERVER['HTTP_X_REQUESTED_WITH']) && 
+		$_SERVER['HTTP_X_REQUESTED_WITH'] === "absentBtn"
 		&& $_POST['pressed']=="absent") {
-	$ck->set($_POST['user_reg'],'absent');
-	$res = $ck->insert();
+			$ob->set($_POST['user_reg'],'absent');
+			$res = $ck->insert();
 	// var_dump($res);	
-}elseif ($_SERVER['HTTP_X_REQUESTED_WITH'] === "viewRecords"){
+}elseif (isset($_SERVER['HTTP_X_REQUESTED_WITH']) &&  
+		$_SERVER['HTTP_X_REQUESTED_WITH'] === "viewRecords"){
 	// var_dump($_POST);
-	echo( $ck->getAllJson($_POST['date']) );
+			echo( $ob->getAllJson($_POST['date']) );
 }
