@@ -10,11 +10,24 @@ public $recorded_date;
 function __construct(PDO $pdo){
 	$this->DB = $pdo;
 }
+public function getMonth($month,$year){
+	$dt    = DateTime::createFromFormat('!m', $month);
+	$month = $dt->format('F');
+	$stmt  = $this->DB->prepare(" SELECT *FROM attendence WHERE MONTHNAME(recorded_date) = ? AND YEAR(recorded_date) = ? ");
+	$stmt->execute([$month,$year]);
+	return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 public function set($regNum,$result){
 	$this->regNum = $regNum;
 	$this->Result = $result;
 	$dt = new DateTime();
 	$this->recorded_date = $dt->format('Y-m-d');
+}
+public function checkIfRecordedToday($reg){
+	$date = date('Y-m-d');
+	$stmt = $this->DB->prepare("SELECT *FROM attendence WHERE user_id = ? AND recorded_date = ?");
+	$stmt->execute([$reg,$date]);
+	return $stmt->rowCount();
 }
 public function insert(){
 	try{
@@ -87,20 +100,40 @@ $ob = new Attendence($db->make());
 if (
 	isset($_SERVER['HTTP_X_REQUESTED_WITH']) && 
 	$_SERVER['HTTP_X_REQUESTED_WITH'] === "presentBtn" 
-	&& $_POST['pressed']=="present") {
+	&& $_POST['pressed'] == "present") {
+	
 	// put in ATTENDENCE table the attendence 
 		$ob->set($_POST['user_reg'],'present');
-		$res = $ck->insert();
-	// var_dump($res);    
+		if ( $ob->checkIfRecordedToday($_POST['user_reg']) ){
+			echo 'Already_Recorded';
+		}else{
+			echo $ob->insert();
+		}
+
 }elseif (
 		isset($_SERVER['HTTP_X_REQUESTED_WITH']) && 
 		$_SERVER['HTTP_X_REQUESTED_WITH'] === "absentBtn"
 		&& $_POST['pressed']=="absent") {
 			$ob->set($_POST['user_reg'],'absent');
-			$res = $ck->insert();
+			//check if already record is in table for the incoming regInp
+			if ( $ob->checkIfRecordedToday($_POST['user_reg']) ){
+				echo 'Already_Recorded';
+			}else{
+				echo $ob->insert();
+			}
 	// var_dump($res);	
 }elseif (isset($_SERVER['HTTP_X_REQUESTED_WITH']) &&  
 		$_SERVER['HTTP_X_REQUESTED_WITH'] === "viewRecords"){
 	// var_dump($_POST);
 			echo( $ob->getAllJson($_POST['date']) );
+}elseif 
+	( 
+	isset($_SERVER['HTTP_X_REQUESTED_WITH']) &&
+	$_SERVER['HTTP_X_REQUESTED_WITH'] === 'filterMonth' &&
+	isset($_POST['month']) && 
+	isset($_POST['year']) 
+	) {
+	
+		$res = $ob->getMonth( $_POST['month'] , $_POST['year'] );
+		echo json_encode($res);
 }

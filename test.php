@@ -1,13 +1,24 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-	<link rel="stylesheet" type="text/css" href="vendor/css/bootstrap.css">
-</head>
-<body>
-<button type="button" class="close" aria-label="Close">
-  <span aria-hidden="true">&times;</span>
-</button>
+<?php
+// set start and end year range
+$yearArray = range(2000, 2050);
+var_dump($yearArray);
+?>
+<!-- displaying the dropdown list -->
+<select name="year">
+    <option value="">Select Year</option>
+    <?php
+    foreach ($yearArray as $year) {
+        // if you want to select a particular year
+        $selected = ($year == 2015) ? 'selected' : '';
+        echo '<option '.$selected.' value="'.$year.'">'.$year.'</option>';
+    }
+    ?>
+</select>
 
-</body>
-</html>
+
+
+
+
+
+
+ ?>

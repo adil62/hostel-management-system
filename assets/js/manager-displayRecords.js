@@ -22,8 +22,6 @@ viewBtn.addEventListener('click',function(){
 				// console.log(parsedData);
 				generateTable(parsedData);
 			}
-		}else{
-			console.log("errrrr");
 		}
 	}
 });
@@ -42,31 +40,81 @@ function generateTable(data){
 		 // create a row for heading
 	 	var rowHead   = table.insertRow();
 	 	// include TH's in The row
-	 	for (prop in data){
-	 		var th = document.createElement("th");	
-	 		th.innerHTML = prop;
-		 	rowHead.appendChild(th);
-		 }
+	 	
 		 // add th e th's to the THEAD-Row and Add the row to the table and append to DIV in html
 		 table.appendChild(rowHead);
 		 // DIVtable.appendChild(table);
 
 		 // var tbody= document.createElement("tbody");
-		 for( var i=0 ; i <= Object.keys(data).length ;i++ ){
-		 	// create one row Put nth element in to the row
-		 	var rowBody = table.insertRow();
-		 	for(prop in data){
-		 		if( typeof data[prop][i] != 'undefined' ){
-					var td = document.createElement("td");
-		 			// console.log(data[prop]);
-		 			td.innerHTML = data[prop][i];
-		 			rowBody.appendChild(td);
-		 			table.appendChild(rowBody);
-		 		}
-		 	}
-		 }
+		 if ( data.constructor === Array ){
+			for (prop in data[0]){
+		 		var th = document.createElement("th");	
+		 		th.innerHTML = prop;
+			 	rowHead.appendChild(th);
+			 }
+			 for( var i=0 ; i <= data.length ;i++ ){
+			 	// create one row Put nth element in to the row
+			 	var rowBody = table.insertRow();
+			 	for(prop in data[i]){
+			 		if( typeof data[i][prop] != 'undefined' ){
+						var td = document.createElement("td");
+			 			// console.log(data[prop]);
+			 			td.innerHTML = data[i][prop];
+			 			rowBody.appendChild(td);
+			 			table.appendChild(rowBody);
+			 		}
+			 	}
+			 }
+			}else if( typeof data === 'object' ){
+			for (prop in data){
+		 		var th = document.createElement("th");	
+		 		th.innerHTML = prop;
+			 	rowHead.appendChild(th);
+			 }
+			 for( var i=0 ; i <= Object.keys(data).length ;i++ ){
+			 	// create one row Put nth element in to the row
+			 	var rowBody = table.insertRow();
+			 	for(prop in data){
+			 		if( typeof data[prop][i] != 'undefined' ){
+						var td = document.createElement("td");
+			 			// console.log(data[prop]);
+			 			td.innerHTML = data[prop][i];
+			 			rowBody.appendChild(td);
+			 			table.appendChild(rowBody);
+			 		}
+			 	}
+			 }
+			}
 		 // append the final table to the child
 		 DIVtable.appendChild(table);
    	 }
 
 }
+
+
+var monthFilter = document.getElementById("monthFilter");
+// if( monthFilter != null ){
+	monthFilter.addEventListener("click",function(){
+		console.log("hii");
+		var month = document.getElementById("month");
+		var year  = document.getElementById("year");
+		var XHR   = new XMLHttpRequest();
+		XHR.open('POST','http://localhost/projects/hostel/classes/attendence.class.php',true);
+		XHR.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+		XHR.setRequestHeader('X-Requested-With','filterMonth');
+		XHR.send( "month=" + encodeURIComponent(month.value) + "&year=" + encodeURIComponent(year.value) );
+		XHR.onreadystatechange = callback;
+		function callback(){
+			if(XHR.readyState === 4){
+				if (XHR.status === 200){
+					// console.log(XHR.responseText);			
+					var res = JSON.parse( XHR.responseText );		
+					generateTable(res);
+				}	
+				else{
+					
+				}
+			}
+		}
+	});
+// }	

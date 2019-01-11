@@ -73,6 +73,6 @@ $reg->set('userRoom',$_POST['user-roomnum']);
 if( $reg->insert() ){
 	$disp = new Display();
 	$disp->show("Submitted Press ok To continue");
-	$loc = DOCROOT.'/assets/templates/manager/manager-home.view.php';
+	$loc = DOCROOT.'/assets/templates/manager/manager-home.view.php?suc=yes';
 	header("Location: $loc");
 }

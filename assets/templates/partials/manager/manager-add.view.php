@@ -63,7 +63,7 @@
 		<div class="col-md-6 offset-md-3">
 			<select name="user-gender" class="form-control m-2">
 				<option value="female"> Female   </option>
-				<option value="male">  Male     </option>
+				<option value="male">   Male     </option>
 			</select>
 		</div>
 	</div>
@@ -84,3 +84,11 @@
 </div> -->
 
 <script type="text/javascript" src="<?php echo DOCROOT;?>/assets/js/cleaner.js"></script>
+<script type="text/javascript" src="<?php echo DOCROOT;?>/assets/js/manager-add.js"></script>
+<script type="text/javascript">
+	let params = new URLSearchParams(location.search);
+	let msg    = params.get('suc');
+	if ( msg === "yes"){
+		
+	} 
+</script>

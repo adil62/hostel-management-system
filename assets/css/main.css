@@ -276,9 +276,10 @@ section{
 	color:green;
 }
 #check{
-	font-size: 1.3em;
+	font-size: 0.9em;
 	color: green;
-	text-transform: uppercase;
+	margin-left : 2rem;
+	/*text-transform: uppercase;*/
 
 }
 /*js stylings DYNAMC*/

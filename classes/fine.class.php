@@ -13,11 +13,11 @@ public function getAll(){
 	return json_encode($row);
 }
 
-public function getMonth($month){
+public function getMonth($month,$year){
 	$ob   		  = DateTime::createFromFormat('m', $month);
 	$month_string = $ob->format('F');
-	$stmt 		  = $this->DB->prepare("SELECT *FROM fee WHERE MONTHNAME(date) = ?");
-	$stmt->execute([$month_string]);	
+	$stmt 		  = $this->DB->prepare("SELECT *FROM fee WHERE MONTHNAME(date) = ? AND YEAR(date) = ?");
+	$stmt->execute([$month_string,$year]);	
 	$row  		  = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	return json_encode($row);
 }
@@ -101,7 +101,8 @@ if( isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) &&
  	$_SERVER['HTTP_X_REQUESTED_WITH'] === 'getMonth' ){
 	
 	$month = $_POST['month']; 
-	echo $ob->getMonth($month);
+	$year  = $_POST['year']; 
+	echo $ob->getMonth($month,$year);
 }                
 
 

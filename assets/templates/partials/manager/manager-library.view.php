@@ -5,15 +5,17 @@
 <?php elseif( isset($_GET['p']) && $_GET['p'] === 'add' ): ?>	
 <div class="section">
 	<h3 class="font-weight-light text-center mb-3"> Add New Book </h3>
-	<form action=" <?= DOCROOT.'/classes/library.class.php' ?>" method="POST" class="form-group mt-2"  enctype="multipart/form-data">
-		<input type="text" name="b_title" placeholder="Enter The Book Title" class="col-md-4 offset-md-4 form-control mt-2" required="required">
-		<input type="text" name="b_name" placeholder="Enter The Book Name" class="col-md-4 offset-md-4 form-control mt-2" required="required">
-		<input type="text" name="b_author" placeholder="Enter The Book Author" class="col-md-4 offset-md-4 form-control mt-2" required="required">
-		<label for="image" class="form-control col-md-4 offset-md-4 mt-2">
-			Select Book Image
-			<input id="image" type="file" name="b_img" class="" required="required">			
-		</label>
-		<input type="submit" name="Submit" class="col-md-4 offset-md-4 btn btn-success">
+	<form action=" <?= DOCROOT.'/classes/library.class.php' ?>" method="POST" class="form-group mt-2"  enctype="multipart/form-data" >
+		<div class="row">
+			<input type="text" name="b_title" placeholder="Enter The Book Title" class="col-md-6 offset-md-3 form-control mt-2" required="required">
+			<input type="text" name="b_name" placeholder="Enter The Book Name" class="col-md-6 offset-md-3 form-control mt-2" required="required">
+			<input type="text" name="b_author" placeholder="Enter The Book Author" class="col-md-6 offset-md-3 form-control mt-2" required="required">
+			<label for="image" class="form-control col-md-6 offset-md-3 mt-2" style="text-overflow: ellipsis;">
+				Select Book Image
+			<input id="image" type="file" name="b_img" class="" required="required" style="text-overflow: ellipsis;">			
+			</label>
+			<input type="submit" name="Submit" class="col-md-6 offset-md-3 btn btn-success">		
+		</div>
 	</form>
 </div>
 <?php elseif( isset($_GET['p']) && $_GET['p'] === 'requests' ): ?>	

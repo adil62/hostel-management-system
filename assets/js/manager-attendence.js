@@ -1,9 +1,10 @@
-var regINPUT       = document.getElementById("ajax3");
-var searchString   = "";
-var check     	   = document.getElementById("check");
-var buttonPresent  = document.getElementById("present");
-var buttonAbsent   = document.getElementById("absent");
-var buttonResult   = document.getElementById("success");
+var regINPUT          = document.getElementById("ajax3");
+var searchString      = "";
+var check     	      = document.getElementById("check");
+var present_absentDiv = document.getElementById("Attendence");
+var buttonPresent     = document.getElementById("present");
+var buttonAbsent      = document.getElementById("absent");
+var buttonResult      = document.getElementById("success");
 
 regINPUT.addEventListener("keyup",function(){
 	if( this.value.length > 4 )
@@ -27,7 +28,9 @@ regINPUT.addEventListener("keyup",function(){
 					check.innerHTML = "User Exists";
 					showForm();
 				}else{
-					check.innerHTML = "";
+					check.innerHTML = "Member Doesnt Exist";
+					buttonAbsent.style.display  = "none";
+					buttonPresent.style.display = "none";
 				}
 			}
 		}	
@@ -35,7 +38,7 @@ regINPUT.addEventListener("keyup",function(){
 });
 // ADD event listener for buttons;
 buttonPresent.addEventListener("click",function(){
-	var XHR = new XMLHttpRequest();
+	var XHR        = new XMLHttpRequest();
 	XHR.open('POST','http://localhost/projects/hostel/classes/attendence.class.php',true);
 	XHR.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
 	XHR.setRequestHeader('X-Requested-With','presentBtn');
@@ -43,10 +46,31 @@ buttonPresent.addEventListener("click",function(){
 	XHR.onreadystatechange = callback;
 	function callback(){
 		if(XHR.readyState === 4){
-			if (XHR.status === 200)
-				buttonResult.innerHTML = "Done";
-			else
+			if (XHR.status === 200){
+				if( XHR.responseText === 'Already_Recorded' ){
+
+				buttonResult.classList.add("alert");
+				buttonResult.classList.add("alert-success");
+				buttonResult.innerHTML = "Already Recorded";
+				setTimeout(function(){
+					buttonResult.innerHTML = "";
+					buttonResult.classList.remove("alert");					
+					buttonResult.classList.remove("alert-success");
+				},5000);
+				}else{
+					buttonResult.classList.add("alert");
+					buttonResult.classList.add("alert-success");
+					buttonResult.innerHTML = "Successfully Recorded";
+					setTimeout(function(){
+						buttonResult.innerHTML = "";
+						buttonResult.classList.remove("alert");					
+						buttonResult.classList.remove("alert-success");
+					},5000);
+				}
+			}	
+			else{
 				buttonResult.innerHTML = "";
+			}
 		}
 	}
 });
@@ -61,12 +85,30 @@ buttonAbsent.addEventListener("click",function(){
 	function callback(){
 		if(XHR.readyState === 4){
 			if (XHR.status === 200){
-				buttonResult.innerHTML = "Successfully Recorded";
-				regINPUT.value = "";
-				check.innerHTML = "";
-			}
-			else
+				if( XHR.responseText === 'Already_Recorded' ){
+
+				buttonResult.classList.add("alert");
+				buttonResult.classList.add("alert-success");
+				buttonResult.innerHTML = "Already Recorded";
+				setTimeout(function(){
+					buttonResult.innerHTML = "";
+					buttonResult.classList.remove("alert");					
+					buttonResult.classList.remove("alert-success");
+				},5000);
+				}else{
+					buttonResult.classList.add("alert");
+					buttonResult.classList.add("alert-success");
+					buttonResult.innerHTML = "Successfully Recorded";
+					setTimeout(function(){
+						buttonResult.innerHTML = "";
+						buttonResult.classList.remove("alert");					
+						buttonResult.classList.remove("alert-success");
+					},5000);
+				}
+			}	
+			else{
 				buttonResult.innerHTML = "";
+			}
 		}
 	}
 });

@@ -49,6 +49,7 @@ window.addEventListener("load",function(){
 
 filterMonth = document.getElementById("filterMonth");
 filterMonth.addEventListener("click",function(){
+	var year        = document.getElementById("year");
 	var msgDIV      = document.getElementById("divTable");
 	var selectValue = document.getElementById("month"); 
 	var XHR         = new XMLHttpRequest();
@@ -56,7 +57,8 @@ filterMonth.addEventListener("click",function(){
 	XHR.onreadystatechange = callback;
 	XHR.setRequestHeader("X-Requested-With","getMonth");
 	XHR.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	XHR.send("month="+encodeURIComponent(selectValue.value));
+	// XHR.send("month="+encodeURIComponent(selectValue.value));
+	XHR.send("month="+encodeURIComponent(selectValue.value) + "&year=" + encodeURIComponent(year.value));
     function callback(){
     	if( XHR.readyState === 4){
     		if( XHR.status === 200){

@@ -102,7 +102,19 @@
 		<option value="11">November</option>
 		<option value="12">December</option>
 	</select>
-	<button class="btn btn-outline-success btn-sm" id="filterMonth">Go </button>
+	<select id="year">
+		<option>YEAR</option>
+		<?php require_once($_SERVER['DOCUMENT_ROOT'].'/projects/hostel/classes/utility.class.php'); ?>
+		<?php $thisYear = $ob->thisYear(); ?>
+		<?php $prev     = $ob->previousYear($thisYear,3);  ?>
+ 		<option selected="selected"> <?= $thisYear;  ?> </option>
+		<?php  	foreach ($prev as $key => $value): ?>
+			 		<option value="<?= $prev[$key]; ?>" >
+			 			 <?= $prev[$key]; ?> 
+			 		</option>  
+		<?php   endforeach;?>
+	</select>
+	<button class="btn btn-outline-success btn-sm" id="filterMonth"> Go </button>
 	<div id="divTable"></div>
 </div>
 <script type="text/javascript" src="<?php echo DOCROOT.'/assets/js/manager-fine.js';?>"></script>	
