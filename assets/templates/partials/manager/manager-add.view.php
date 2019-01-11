@@ -1,8 +1,5 @@
-<!-- <div class="wrapper">
-<section > -->
 <div class="container">	
-<!-- <div class="form"> -->
-<form method="POST" class="form-group" action="<?= DOCROOT.'/classes/register.class.php' ?>">
+<!-- <form method="POST" class="form-group" action=""> -->
 	<!-- COLLECT USER INFO -->
 	<div class="row">
 		<div class="col-md-6 offset-md-3">
@@ -76,19 +73,19 @@
 		<div class="col-md-6 offset-md-3">
 			<input type="submit" name="submit" class="form-control btn-cus" id="submit">
 		</div>
-	</div>	
-</form>
+	</div>
+	<div id="msg"></div>	
 <!-- </div> -->
 </div>	
 <!-- 	</section>
 </div> -->
 
-<script type="text/javascript" src="<?php echo DOCROOT;?>/assets/js/cleaner.js"></script>
+
 <script type="text/javascript" src="<?php echo DOCROOT;?>/assets/js/manager-add.js"></script>
 <script type="text/javascript">
 	let params = new URLSearchParams(location.search);
 	let msg    = params.get('suc');
 	if ( msg === "yes"){
-		
+
 	} 
 </script>

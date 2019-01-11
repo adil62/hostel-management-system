@@ -53,26 +53,60 @@ class Register{
 		// print_r($this->data);
 		return $this->stmt->execute($this->data);
 	}
+    public function memberExist($reg){
+    	$pdo   = new Database(HOST,USER,PASSWORD,'hostel');
+    	$pdo   = $pdo->make();
+    	$stmt  = $pdo->prepare("SELECT *FROM members WHERE user_reg = ? ");
+    	$stmt->execute( [$reg] );
+    	return $stmt->rowCount();
+    }
+
 	function __construct(Database $db){
 		$this->stmt = $db->prepare($db->make());
 	}
 }
 $db   = new Database(HOST,USER,PASSWORD,'hostel');
-$reg  = new Register($db);
-$reg->set('userName',$_POST['user-name']);
-$reg->set('userBranch',$_POST['user-branch']);
-$reg->set('userYear',$_POST['user-year']);
-$reg->set('userReg',$_POST['user-regno']);
-$reg->set('userEmail',$_POST['user-email']);
-$reg->set('userPhone',$_POST['user-phone']);
-$reg->set('userAddress',$_POST['user-address']);
-$reg->set('userParentPhone',$_POST['user-parentphone']);
-$reg->set('userGender',$_POST['user-gender']);
-$reg->set('userRoom',$_POST['user-roomnum']);
+$reg  = new Register( $db );
 
-if( $reg->insert() ){
-	$disp = new Display();
-	$disp->show("Submitted Press ok To continue");
-	$loc = DOCROOT.'/assets/templates/manager/manager-home.view.php?suc=yes';
-	header("Location: $loc");
+if(isset($_POST['data'])){
+	$DATA = json_decode($_POST['data']);
+	// var_dump($DATA);
+}
+
+if( 
+	isset( $DATA->userName   )      &&
+	isset( $DATA->userBranch )      &&
+	isset( $DATA->userYear   )      &&
+	isset( $DATA->userRegno  )      &&
+	isset( $DATA->userEmail  )      &&
+	isset( $DATA->userPhone  )      &&
+	isset( $DATA->userAddress)      &&
+	isset( $DATA->userParentPhone ) &&
+	isset( $DATA->userGender      ) &&
+	isset( $DATA->userRoom   ) 
+   	
+   )
+{
+	$reg->set('userName',       $DATA->userName);
+	$reg->set('userBranch',     $DATA->userBranch);
+	$reg->set('userYear',       $DATA->userYear);
+	$reg->set('userReg',        $DATA->userRegno);
+	$reg->set('userEmail',      $DATA->userEmail);
+	$reg->set('userPhone',      $DATA->userPhone);
+	$reg->set('userAddress',    $DATA->userAddress);
+	$reg->set('userParentPhone',$DATA->userParentPhone);
+	$reg->set('userGender',     $DATA->userGender);
+	$reg->set('userRoom',       $DATA->userRoom);      
+	
+	if( $reg->memberExist( $DATA->userRegno ) ){
+		echo "exist";
+	}else{
+		if( $reg->insert() ){
+			echo true;
+			// $disp = new Display();
+			// $disp->show("Submitted Press ok To continue");
+			// $loc = DOCROOT.'/assets/templates/manager/manager-home.view.php?suc=yes';
+			// header("Location: $loc");
+		}
+	}	
 }
