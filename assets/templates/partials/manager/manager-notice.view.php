@@ -4,15 +4,16 @@
 	<input type="text" name="" placeholder="Enter Reg Number" id="regNum">              
 	<input type="text" name="" placeholder="Enter Message" id="Msg" required="required">
 	<input type="submit" name="" class="btn btn btn-success btn-sm" value="Add" id="submit">
-</div>	
-
+</div>
+<div id="msg" class="mt-3"></div>	
+<script type="text/javascript" src="<?= DOCROOT.'/assets/js/user-notice.js' ?> "></script>
 <?php elseif( isset($_GET['p']) && $_GET['p'] == 'view'  ): ?>
 	<?php require_once($_SERVER['DOCUMENT_ROOT']."/projects/hostel/classes/notice.class.php") ?>
 <table class="table table-hover ">
 	<caption>All Notices</caption>
 	<thead class="thead-light">
 	<tr>
-		<th>Id</th>
+		<th>Id</th> 
 		<th>Reg.No</th>
 		<th>Message</th>
 		<th>Date</th>
@@ -28,7 +29,7 @@
 				<td> <?= $row[$key]['message']; ?> </td>				
 				<td> <?= $row[$key]['date'];    ?> </td>				
 				<td>  
-				<a  href=" <?= 'http://localhost/projects/hostel/classes/notice.class.php?dltId='.$row[$key]['reg'];?> " >
+				<a  href=" <?= 'http://localhost/projects/hostel/classes/notice.class.php?dltId='.$row[$key]['id'];?> " >
 					<strong>Delete</strong>
 				</a> 
 				</td>				

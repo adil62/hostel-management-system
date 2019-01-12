@@ -82,10 +82,3 @@
 
 
 <script type="text/javascript" src="<?php echo DOCROOT;?>/assets/js/manager-add.js"></script>
-<script type="text/javascript">
-	let params = new URLSearchParams(location.search);
-	let msg    = params.get('suc');
-	if ( msg === "yes"){
-
-	} 
-</script>

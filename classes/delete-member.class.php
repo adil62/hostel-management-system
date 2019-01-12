@@ -30,13 +30,13 @@ class DeleteMember{
 	}
 }
 if( isset( $_POST['user_name'] ) && isset( $_POST['user_reg'] )  ){
-	$ob   = new DeleteMember(new Database(HOST,USER,PASSWORD,'hostel'));
+	$ob   = new DeleteMember( new Database(HOST,USER,PASSWORD,'hostel') );
 	$ob->set($_POST['user_name'],$_POST['user_reg']);
 	if( $ob->execute() ){
-		$loc = DOCROOT.'/assets/templates/manager/manager-home.view.php';
+		$loc = DOCROOT.'/assets/templates/manager/manager-home.view.php?p=delete&msg=yes';
 		header("Location: $loc");
 	}else{
-		echo "errr".die();
+		echo "fail".die();
 	}
  }
  ?>
