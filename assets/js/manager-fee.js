@@ -4,6 +4,7 @@ var newFee        = document.getElementById("new-fee");
 var date1         = document.getElementById("date2");
 var filter1  	  = document.getElementById("filter1");
 var filter2  	  = document.getElementById("filter2");
+var year          = document.getElementById("year");
 if(currentAmount!=null){
 window.addEventListener("load",function(){
 	var XHR = new XMLHttpRequest();
@@ -18,7 +19,7 @@ window.addEventListener("load",function(){
 				var response = XHR.responseText;
 				response     = JSON.parse(response); 
 				currentAmount.value = response.fee;
-				console.log( response );				
+				// console.log( response );				
 			}
 		}
 	}
@@ -107,10 +108,10 @@ filter1.addEventListener("click",function(){
 	}
 });
 }
-if (filter2 != null){
+if ( filter2 != null ){
 filter2.addEventListener("click",function(){
 	var month    = document.getElementById("select");
-	var year     = document.getElementById("currentYear");
+	// var year     = document.getElementById("currentYear");
 	valueYear    = year.value;
 	valueMonth   = month.value;
 	var XHR   = new XMLHttpRequest();
@@ -128,7 +129,7 @@ filter2.addEventListener("click",function(){
 				if( document.contains( document.getElementById("dynTable") )){
        				document.getElementById("dynTable").remove();
        			}	
-				console.log(XHR.responseText);
+				// console.log(XHR.responseText);
 				var div      = document.getElementById("content");
 				var response = XHR.responseText;
 				var response = JSON.parse(response);
@@ -172,8 +173,7 @@ var reg   = document.getElementById("pay-reg"); //button
 if(reg !=null){
 reg.addEventListener("click",function(){
 	var input      = document.getElementById("reg_input"); 
-
-	console.log("input:"+input.value);
+	// console.log("input:"+input.value);
 	var XHR   = new XMLHttpRequest();
 	XHR.open("POST","http://localhost/projects/hostel/classes/payment.class.php",true);
 	XHR.onreadystatechange = callback;
@@ -184,7 +184,7 @@ reg.addEventListener("click",function(){
     function callback(){
     	if(XHR.readyState == 4){
     		if(XHR.status == 200){
-    			console.log(XHR.responseText);
+    			// console.log(XHR.responseText);
     			var payDiv                        =  document.querySelector("#payDetails");
     			var reg_div     = document.querySelector("#payDetails .reg");
 				var present_div = document.querySelector("#payDetails .present");
@@ -204,6 +204,7 @@ reg.addEventListener("click",function(){
 var submitPay = document.getElementById("submitPay");
 if(submitPay != null){
 submitPay.addEventListener("click",function(){
+	var input      = document.getElementById("reg_input"); 
 	var msgDIV   = document.getElementById("payResult");
 	var XHR      = new XMLHttpRequest();
 	XHR.open("POST","http://localhost/projects/hostel/classes/payment.class.php",true);
@@ -220,6 +221,12 @@ submitPay.addEventListener("click",function(){
     				msgDIV.innerHTML = "Already Paid For The Previous Month";
     			}else if(response == "done"){
     				msgDIV.innerHTML = "Success";
+    				msg.classList.add("alert","alert-primary");
+    				setTimeout(function(){
+						msg.innerHTML = "";
+						msg.classList.remove("alert");					
+						msg.classList.remove("alert-success");
+					},4000);
     			}else{
     				msgDIV.innerHTML = "";
     			}

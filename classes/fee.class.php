@@ -59,6 +59,10 @@ public function genFeesUser($reg){
  			$amount = $row['fee'];
  			$fees   = ($amount * 31 ) + $fine;
  			return $fees;
+ 		}
+//added on jan 16
+ 		else{
+ 			return 0;
  		}	
 
 }

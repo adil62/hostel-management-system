@@ -2,7 +2,6 @@
 <div class="top">
 <h3 class="text-center font-weight-light" style="margin-top: -2rem;">All Available Books At The Library</h3>
 
-<!-- <form action="<?= DOCROOT.'/classes/library.class.php'?>" method="POST" class="form-group"> -->
 <div class="row">	
 	<input class="form-control col-md-4 offset-md-6 " type="text" placeholder="Search For Available Books In the Library" aria-label="Search" name="searchTxt">
 	<input type="submit" name="search" value="Search" class="btn-success btn-sm col-md-1 form-control">
@@ -49,7 +48,7 @@
 		<input type="hidden" name="requested_by" value=" <?= $_SESSION['name'][0]->user_reg; ?>" >
 		<input type="submit" name="submit" class="form-control col-md-4 offset-md-4 btn btn-success mt-2">
 	</form>
-	
+	<div id="msg"></div>
 <?php endif; ?>
 
 <script type="text/javascript" src="<?= DOCROOT.'/assets/js/library.js'; ?>"></script>

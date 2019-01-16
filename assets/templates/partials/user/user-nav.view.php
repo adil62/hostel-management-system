@@ -7,7 +7,7 @@
 		<a href="<?php echo DOCROOT.'/assets/templates/user/user-notice-board.view.php?p=my';?>" class="nav-link" class="nav-link">Notice-Board</a>
 	</li>
 	<li class="nav-item">
-		<a href="<?php echo DOCROOT.'/assets/templates/user/user-complaint.view.php'; ?>" class="nav-link">Complaint</a>
+		<a href="<?php echo DOCROOT.'/assets/templates/user/user-complaint.view.php?p=new'; ?>" class="nav-link">Complaint</a>
 	</li>
 	<li class="nav-item">
 		<a href="<?php echo DOCROOT.'/assets/templates/user/user-library.view.php?p=allbooks'; ?>" class="nav-link">Library</a>

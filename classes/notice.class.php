@@ -31,8 +31,8 @@ public $DB ;
 		return $stmt->rowCount();
 	}
 	public function getBcast(){
-		$stmt = $this->DB->prepare("SELECT *FROM notice WHERE reg = 1");
-		$stmt->execute();
+		$stmt = $this->DB->prepare("SELECT *FROM notice WHERE reg = ?");
+		$stmt->execute([1]);
 		return $stmt->fetchAll(PDO::FETCH_ASSOC);
 	}
 

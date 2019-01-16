@@ -26,12 +26,12 @@
 				<p class="font-weight-bold">Filter By</p>
 				<span class="ml-3">Date</span>
 			<div class="col-md-4">
-				<input type="text" name="" id="date2" data-large-default="true" data-large-mode="true" data-format="Y-m-d">
+				<input type="text" name="" id="date2" data-large-default="true" data-large-mode="true" data-format="Y-m-d" class="">
 				<button class="btn btn-warning btn-sm" id="filter1">go</button>
 			</div>
 				<p>Month</p>
 			<div class="col-md-4 ">
-				<select id="select">
+				<select id="select" class="custom-select">
 					<option value="0">Month</option>
 					<option value="1">January</option>
 					<option value="2">February</option>
@@ -46,11 +46,16 @@
 					<option value="11">November</option>
 					<option value="12">December</option>
 				</select>
-				<select  disabled="disabled">
+				<select  class="custom-select" id="year">
 				<?php require_once($_SERVER['DOCUMENT_ROOT'].'/projects/hostel/classes/utility.class.php'); ?>	
-					<option id="currentYear" value="<?= $ob->thisYear(); ?>">
-						<?= $ob->thisYear(); ?>
-					</option>
+					<?php $thisYear = $ob->thisYear(); ?>
+					<?php $prev     = $ob->previousYear($thisYear,3);  ?>
+			 		<option selected="selected"> <?= $thisYear;  ?> </option>
+					<?php  	foreach ($prev as $key => $value): ?>
+						 		<option value="<?= $prev[$key]; ?>" >
+						 			 <?= $prev[$key]; ?> 
+						 		</option>  
+					<?php   endforeach;?>
 				</select>
 				<button class="btn btn-warning btn-sm" id="filter2">go</button>
 			</div>

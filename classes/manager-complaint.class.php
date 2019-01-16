@@ -104,27 +104,31 @@ class Complaint{
 }
 $db  = new Database(HOST,USER,PASSWORD,'hostel');
 $ob  = new Complaint($db->make());
+// if delete complaint
 if(isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) &&
  $_SERVER['HTTP_X_REQUESTED_WITH'] === 'dlt'){
 
 	echo $ob->dltComplaint($_POST['id']);
  	die();
- }elseif( isset($_POST['title']) && isset($_POST['message']) && isset($_POST['reg'])  ){
+ }
+// if Insert Complaint
+ elseif( isset($_POST['title']) && isset($_POST['message']) && isset($_POST['reg'])  ){
  	
 	$res = $ob->putComplaint($_POST['title'],$_POST['message'],$_POST['reg']);
  	if($res){
  		$loc  = $_SERVER['HTTP_REFERER'];
- 		header("Location: ".$loc);
+ 		// $loc  = $loc.'?msg=suc';
+		$res  = preg_match("/\?msg=yes/", $loc);		
+		if($res){
+ 			header("Location: ".$loc);
+		}else{
+ 			header("Location: ".$loc."&msg=yes");			
+		}
  		die();
  	}
 
  }
-//  else{	
-// 	$db  = new Database(HOST,USER,PASSWORD,'hostel');
-// 	$com = new Complaint($db->make());
-// 	echo $com->getComplaint();
-//  	die();
-// }
+
 
 
 

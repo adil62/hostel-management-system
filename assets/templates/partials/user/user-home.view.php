@@ -51,15 +51,16 @@
 			<h3> Current Fee
 			<?php 
 				require_once( $_SERVER['DOCUMENT_ROOT']."/projects/hostel/classes/fee.class.php" );
-				$reg = 15150442;
+				$reg = $_SESSION['name'][0]->user_reg;
+				// echo $reg;
 				$fee = new Fee($db->make());?> 
 				<span class="font-weight-bold"> 
 				<?php echo $fee->genFeesUser($reg); ?>
 				</span>
 			</h3>
 		</div>
+		<?php //var_dump($_SESSION); ?>
 		<div class="section">
-
 		<?php require_once( $_SERVER['DOCUMENT_ROOT']."/projects/hostel/classes/payment.class.php" );  ?>
 			<table class="table table-hover mt-3">
 			<caption>Previous Payments</caption>

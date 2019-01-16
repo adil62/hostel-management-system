@@ -101,7 +101,7 @@ if(
   ){
 		$loc = $_SERVER['DOCUMENT_ROOT'].'/projects/hostel/assets/images/books/';
 		if ( $ob->insert( $_POST['b_title'],$_POST['b_author'],$_POST['b_name'],$loc ) ){
-				$loc = $_SERVER['HTTP_REFERER'];
+				$loc = $_SERVER['HTTP_REFERER'].'&msg=yes';
 				header("Location: ".$loc);
 		}
 }
@@ -125,10 +125,14 @@ elseif( isset( $_GET['delete_book'] )){
 ) {
 		if ($ob->bookRequest($_POST['book_name'],$_POST['book_author'],$_POST['requested_by']) ){
 			$loc = $_SERVER['HTTP_REFERER'];
-			header("Location: ".$loc);
+			if (preg_match('/msg=yes/', $loc) ){
+				header("Location: ".$loc);
+			}else{
+				header("Location: ".$loc.'&msg=yes');
+			}
 		}
 }elseif( isset($_GET['p']) && $_GET['p'] === 'requests' && isset($_GET['delete']) ){
-	if ( $ob->deleteBookRequest($_GET['delete']) ){
+	if ( $ob->deleteBookRequest( $_GET['delete'] ) ){
 		$loc = $_SERVER['HTTP_REFERER'];
 		header("Location: ".$loc);
 	}

@@ -20,5 +20,22 @@
 	</div>
 	<input type="hidden" name="reg" value="<?= $_SESSION['name'][0]->user_reg;?> ">
 </form>
+<div id="msg"></div>
 </div>
-<?php endif; ?>
+<script type="text/javascript">
+	let searchParams = new URLSearchParams( window.location.href );
+	let val          = searchParams.get("msg");
+	var div          = document.getElementById("msg");
+	if(val === 'yes'){
+		//display succ msg
+		div.classList.add("alert");
+		div.classList.add("alert-success");
+		div.innerHTML = "Success";
+		setTimeout(function(){
+			div.innerHTML = "";
+			div.classList.remove("alert");					
+			div.classList.remove("alert-success");
+		},5000);
+	}
+</script>
+<?php endif; ?> 

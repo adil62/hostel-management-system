@@ -18,6 +18,23 @@
 		</div>
 	</form>
 </div>
+<div id="msg"></div>
+<script type="text/javascript">
+	let searchParams = new URLSearchParams( window.location.href );
+	let val          = searchParams.get("msg");
+	var div          = document.getElementById("msg");
+	if(val === 'yes'){
+		//display succ msg
+		div.classList.add("alert");
+		div.classList.add("alert-success");
+		div.innerHTML = "Success";
+		setTimeout(function(){
+			div.innerHTML = "";
+			div.classList.remove("alert");					
+			div.classList.remove("alert-success");
+		},5000);
+	}	
+</script>
 <?php elseif( isset($_GET['p']) && $_GET['p'] === 'requests' ): ?>	
 	<?php require_once($_SERVER['DOCUMENT_ROOT'].'/projects/hostel/classes/library.class.php'); ?>
 	<?php $row = $ob->getRequests() ; ?>
